@@ -30,35 +30,35 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-canopy via-canopy/80 to-canopy/40" />
 
       <div className="relative mx-auto flex min-h-[62vh] max-w-7xl flex-col items-center justify-center px-4 py-20 text-center sm:px-6 lg:px-8">
-        <span className="nursery-tag rounded-full border border-paper/30 px-3 py-1 text-paper/80">
+        <span className="nursery-tag animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out rounded-full border border-paper/30 px-3 py-1 text-paper/80">
           Grown by plant people, guided by AI
         </span>
-        <h1 className="mt-6 max-w-2xl text-balance font-display text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+        <h1 className="mt-6 max-w-2xl text-balance font-display text-4xl font-semibold leading-tight animate-in fade-in slide-in-from-bottom-5 duration-700 delay-150 fill-mode-both sm:text-5xl md:text-6xl">
           Find, Grow, and Understand Your Plants
         </h1>
-        <p className="mt-5 max-w-lg text-balance text-paper/75">
+        <p className="mt-5 max-w-lg text-balance text-paper/75 animate-in fade-in slide-in-from-bottom-5 duration-700 delay-300 fill-mode-both">
           Browse plants from local sellers, snap a photo to identify any species, and get an
           AI-written care guide before you bring it home.
         </p>
 
-        <form onSubmit={handleSearch} className="mt-8 flex w-full max-w-lg gap-2">
-          <div className="relative flex-1">
-            <Search className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink/40" size={18} />
+        <form onSubmit={handleSearch} className="mt-8 flex w-full max-w-lg gap-2 animate-in fade-in slide-in-from-bottom-5 duration-700 delay-500 fill-mode-both">
+          <div className="relative flex-1 group">
+            <Search className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink/40 transition-colors group-focus-within:text-canopy" size={18} />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search “monstera”, “low light”, “pet-safe”…"
-              className="border-none bg-paper pl-10 text-ink shadow-pop"
+              className="border-none bg-paper pl-10 text-ink shadow-pop transition-all focus:ring-2 focus:ring-canopy/50 focus:shadow-xl"
             />
           </div>
-          <Button type="submit" size="md">
+          <Button type="submit" size="md" className="transition-transform active:scale-95">
             Search
           </Button>
         </form>
 
         <button
           onClick={() => router.push("/identify")}
-          className="mt-4 flex items-center gap-1.5 text-sm text-paper/70 underline-offset-4 hover:text-paper hover:underline"
+          className="mt-4 flex items-center gap-1.5 text-sm text-paper/70 underline-offset-4 transition-colors hover:text-paper hover:underline animate-in fade-in duration-700 delay-700 fill-mode-both"
         >
           <Camera size={15} /> Or identify a plant from a photo instead
         </button>

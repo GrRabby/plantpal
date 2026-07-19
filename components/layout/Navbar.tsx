@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const loggedOutLinks = [
+  { href: "/", label: "Home" },
   { href: "/plants", label: "Explore" },
   { href: "/identify", label: "Identify" },
   { href: "/blog", label: "Blog" },
@@ -16,6 +17,7 @@ const loggedOutLinks = [
 ];
 
 const loggedInLinks = [
+  { href: "/", label: "Home" },
   { href: "/plants", label: "Explore" },
   { href: "/identify", label: "Identify" },
   { href: "/plants/add", label: "Add Plant" },
@@ -50,18 +52,23 @@ export const Navbar = () => {
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "text-sm font-medium text-ink/70 transition-colors hover:text-canopy",
-                pathname === link.href && "text-canopy"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "relative py-1 text-sm font-medium transition-colors",
+                  isActive ? "text-canopy" : "text-ink/60 hover:text-ink",
+                  "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-left after:scale-x-0 after:bg-canopy after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100",
+                  isActive && "after:scale-x-100"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">

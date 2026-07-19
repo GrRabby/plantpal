@@ -25,14 +25,14 @@ export const Categories = () => {
           <Link
             key={label}
             href={`/plants?category=${encodeURIComponent(label)}`}
-            className="group flex flex-col items-start gap-3 rounded-card border border-sand bg-white p-4 shadow-card transition-transform hover:-translate-y-0.5 hover:shadow-pop"
+            className="group flex flex-col items-start gap-3 rounded-[16px] border border-sand bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-pop hover:border-canopy/20"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-moss/15 text-canopy transition-colors group-hover:bg-canopy group-hover:text-paper">
-              <Icon size={18} />
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-moss/10 text-canopy transition-all duration-300 group-hover:bg-canopy group-hover:text-paper group-hover:scale-110 group-hover:shadow-md">
+              <Icon size={20} className="transition-transform duration-300" />
             </span>
             <div>
-              <p className="font-medium text-ink">{label}</p>
-              <p className="text-xs text-ink/50">{desc}</p>
+              <p className="font-semibold text-ink group-hover:text-canopy transition-colors">{label}</p>
+              <p className="mt-0.5 text-xs text-ink/60">{desc}</p>
             </div>
           </Link>
         ))}

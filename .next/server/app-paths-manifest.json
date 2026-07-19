@@ -1,1 +1,7 @@
-{}
+{
+  "/dashboard/page": "app/dashboard/page.js",
+  "/identify/page": "app/identify/page.js",
+  "/page": "app/page.js",
+  "/plants/add/page": "app/plants/add/page.js",
+  "/plants/manage/page": "app/plants/manage/page.js"
+}
