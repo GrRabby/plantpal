@@ -27,14 +27,14 @@ export default function AboutPage() {
       <section className="relative">
         <div className="relative h-72 w-full overflow-hidden">
           <Image
-            src="https://images.unsplash.com/photo-1524598171353-e0d21b93e1e6?w=1600&q=75&auto=format"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWwvaQ-aguZemarSB84blPFyVuATkw_dZlwGfGlmEyX7E4fBWE7t52Xdwe&s=10"
             alt="Rows of potted plants"
             fill
             className="object-cover"
           />
           <div className="absolute inset-0 bg-canopy/60" />
         </div>
-        <div className="mx-auto -mt-20 max-w-3xl px-4 pb-4 text-center sm:px-6">
+        <div className="mx-auto max-w-3xl pb-4 text-center mt-5">
           <div className="rounded-card bg-white p-8 shadow-pop">
             <p className="nursery-tag text-moss">Our story</p>
             <h1 className="mt-2 font-display text-3xl font-semibold text-ink sm:text-4xl">

@@ -8,17 +8,24 @@ import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { useDeletePlant, useMyPlants } from "@/hooks/usePlants";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { ConfirmModal } from "@/components/ui/ConfirmModal";
 import { formatPrice, formatDate } from "@/lib/utils";
 
 function ManageContent() {
   const { data: plants, isLoading } = useMyPlants();
   const deletePlant = useDeletePlant();
   const [pendingId, setPendingId] = useState<string | null>(null);
+  const [confirmId, setConfirmId] = useState<string | null>(null);
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Delete this listing? This can't be undone.")) return;
-    setPendingId(id);
-    await deletePlant.mutateAsync(id);
+  const handleDelete = (id: string) => {
+    setConfirmId(id);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!confirmId) return;
+    setPendingId(confirmId);
+    setConfirmId(null);
+    await deletePlant.mutateAsync(confirmId);
     setPendingId(null);
   };
 
@@ -112,6 +119,15 @@ function ManageContent() {
           </table>
         </div>
       )}
+      <ConfirmModal
+        open={confirmId !== null}
+        title="Delete this listing?"
+        description="This will permanently remove the plant from the marketplace. This action can't be undone."
+        confirmLabel="Yes, delete"
+        loading={pendingId !== null}
+        onConfirm={handleConfirmDelete}
+        onCancel={() => setConfirmId(null)}
+      />
     </div>
   );
 }

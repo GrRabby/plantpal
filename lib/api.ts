@@ -20,7 +20,7 @@ const buildUrl = (path: string, query?: RequestOptions["query"]) => {
   const url = new URL(`${BASE_URL}${path}`);
   if (query) {
     Object.entries(query).forEach(([key, value]) => {
-      if (value !== undefined && value !== "") url.searchParams.set(key, String(value));
+      if (value !== undefined && value !== "" && !Number.isNaN(value)) url.searchParams.set(key, String(value));
     });
   }
   return url.toString();

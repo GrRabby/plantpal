@@ -9,9 +9,9 @@ import { Pagination } from "@/components/plants/Pagination";
 
 function ExploreContent() {
   const searchParams = useSearchParams();
+
   const router = useRouter();
   const pathname = usePathname();
-
   const [filters, setFilters] = useState<PlantFilters>({
     search: searchParams.get("search") || undefined,
     category: searchParams.get("category") || undefined,
@@ -22,7 +22,6 @@ function ExploreContent() {
     page: Number(searchParams.get("page")) || 1,
     limit: 12,
   });
-
   useEffect(() => {
     const params = new URLSearchParams();
     if (filters.search) params.set("search", filters.search);
@@ -38,7 +37,7 @@ function ExploreContent() {
 
   const { data, isLoading } = usePlants(filters);
 
-  return (-
+  return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-6">
         <p className="nursery-tag text-moss">Explore</p>
