@@ -38,7 +38,7 @@ export default function RegisterPage() {
   };
 
   const handleGoogle = async () => {
-    await signIn.social({ provider: "google", callbackURL: "/dashboard" });
+    await signIn.social({ provider: "google", callbackURL: `${window.location.origin}/` });
   };
 
   return (
