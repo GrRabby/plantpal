@@ -2,14 +2,12 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Leaf, Mail, Lock, User } from "lucide-react";
 import { signIn, signUp } from "@/lib/auth-client";
 import { Button } from "@/components/ui/Button";
 import { Input, Label } from "@/components/ui/Field";
 
 export default function RegisterPage() {
-  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,8 +31,7 @@ export default function RegisterPage() {
       setError(signUpError.message || "Could not create your account.");
       return;
     }
-    router.push("/dashboard");
-    router.refresh();
+    window.location.replace("/");
   };
 
   const handleGoogle = async () => {
