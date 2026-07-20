@@ -28,12 +28,12 @@ export default function LoginPage() {
       setError(signInError.message || "Invalid email or password.");
       return;
     }
-    router.push("/dashboard");
+    router.push("/");
     router.refresh();
   };
 
   const handleGoogle = async () => {
-    await signIn.social({ provider: "google", callbackURL: "/dashboard" });
+    await signIn.social({ provider: "google", callbackURL: `${window.location.origin}/` });
   };
 
   return (

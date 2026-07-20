@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 
 export const DEMO_CREDENTIALS = {
   email: "demo@plantpal.app",
-  password: "PlantPalDemo123",
+  password: "Password123",
 };
 
 export const DemoLoginButton = ({
