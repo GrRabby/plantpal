@@ -2,7 +2,6 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Leaf, Mail, Lock } from "lucide-react";
 import { signIn } from "@/lib/auth-client";
 import { Button } from "@/components/ui/Button";
@@ -10,7 +9,6 @@ import { Input, Label } from "@/components/ui/Field";
 import { DemoLoginButton, DEMO_CREDENTIALS } from "@/components/auth/DemoLoginButton";
 
 export default function LoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,8 +26,7 @@ export default function LoginPage() {
       setError(signInError.message || "Invalid email or password.");
       return;
     }
-    router.push("/");
-    router.refresh();
+    window.location.replace("/");
   };
 
   const handleGoogle = async () => {
