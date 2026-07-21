@@ -1,97 +1,174 @@
-# PlantPal — Client
+# 🌿 PlantPal
 
-Frontend for PlantPal: Next.js (App Router) + TypeScript + Tailwind CSS + TanStack Query + **better-auth** client, talking to the `plantpal-server` API.
+A modern plant marketplace and plant management platform built with **Next.js**, **TypeScript**, and **Tailwind CSS**. PlantPal allows users to discover plants, filter by categories, browse detailed information, and manage their plant collection through a clean and responsive interface.
 
-## Stack
+![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-38BDF8?logo=tailwindcss&logoColor=white)
 
-- **Next.js 14** (App Router) + **TypeScript**
-- **Tailwind CSS** — custom design system (see `tailwind.config.ts`)
-- **TanStack Query** — data fetching/caching against the Express backend
-- **better-auth/react** — auth client (session cookies + JWT support), matching the server's `better-auth` setup
-- **Recharts** — dashboard stats
-- **lucide-react** — icons
+---
 
-## Setup
+## ✨ Features
+
+- 🌱 Browse a collection of plants
+- 🔍 Search plants instantly
+- 🗂️ Filter by category
+- 💲 Price range filtering
+- 🌿 Care difficulty filtering
+- ↕️ Sorting options
+- 📄 Pagination
+- ⚡ Fast client-side data fetching with TanStack Query
+- 🔄 URL synchronized filters
+- 📱 Fully responsive design
+- 🔐 Authentication
+- ❤️ Modern and clean UI
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- TanStack Query
+- React Hook Form
+- Zod
+- Lucide React
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Better Auth
+
+---
+
+## 📂 Project Structure
+
+```text
+plantpal/
+│
+├── app/
+├── components/
+├── hooks/
+├── lib/
+├── providers/
+├── public/
+├── styles/
+├── types/
+└── ...
+```
+
+---
+
+## 🚀 Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/GrRabby/plantpal.git
+```
+
+```bash
+cd plantpal
+```
+
+### Install dependencies
 
 ```bash
 npm install
-cp .env.local.example .env.local
-# set NEXT_PUBLIC_API_URL to wherever plantpal-server is running
+```
+
+### Configure Environment Variables
+
+Create a `.env.local` file.
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000
+```
+
+Add any additional environment variables your project requires.
+
+### Start the development server
+
+```bash
 npm run dev
 ```
 
-App runs at `http://localhost:3000`. Make sure `plantpal-server` is running first (see its own README) — this frontend has no backend of its own; every request goes to `NEXT_PUBLIC_API_URL`.
+Open
 
-### Creating the demo login account
+```
+http://localhost:3000
+```
 
-The Login page has a **"Fill demo login"** button that autofills:
-- email: `demo@plantpal.app`
-- password: `PlantPalDemo123`
-
-For the button to actually log someone in, that account needs to exist. Create it once by signing up normally through `/register` with those exact credentials, or via curl:
+## 📦 Scripts
 
 ```bash
-curl -X POST http://localhost:5000/api/auth/sign-up/email \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Demo User","email":"demo@plantpal.app","password":"PlantPalDemo123"}'
+npm run dev        # Development server
+npm run build      # Production build
+npm run start      # Production server
+npm run lint       # Lint project
 ```
 
-## Folder Structure
+---
 
-```
-app/
-  layout.tsx, providers.tsx, globals.css
-  page.tsx                  # home
-  plants/page.tsx           # explore
-  plants/[id]/page.tsx      # details
-  plants/add/page.tsx       # protected — add listing (+ AI care guide generator)
-  plants/manage/page.tsx    # protected — manage own listings
-  identify/page.tsx         # protected — AI plant identifier
-  login/, register/         # auth pages
-  dashboard/page.tsx        # protected — stats (Recharts)
-  about/, contact/, blog/, privacy/, terms/
-components/
-  layout/                   # Navbar, Footer
-  ui/                       # Button, Field (Input/Textarea/Select), Badge, Skeleton, RatingStars, VineDivider
-  plants/                   # PlantCard, PlantGrid, PlantFiltersBar, Pagination, ReviewsSection
-  auth/                     # ProtectedRoute, DemoLoginButton
-  ai/                       # CareGuideGenerator, PlantIdentifier
-  home/                     # Hero, Categories, FeaturedPlants, AIHighlight, HowItWorks, Stats, Testimonials, Newsletter
-lib/
-  auth-client.ts            # better-auth React client
-  api.ts                    # typed fetch wrapper (sends credentials to the server)
-  types.ts, utils.ts
-hooks/
-  usePlants.ts, useReviews.ts, useAI.ts   # TanStack Query hooks
+## 🌍 Deployment
+
+The project can be deployed easily on:
+
+- Vercel
+- Netlify
+- Render
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch
+
+```bash
+git checkout -b feature/my-feature
 ```
 
-## Design System
+3. Commit your changes
 
-Defined in `tailwind.config.ts` — a nursery/botanical palette rather than a generic template look:
+```bash
+git commit -m "Add awesome feature"
+```
 
-| Token | Hex | Use |
-|---|---|---|
-| `canopy` | `#24402A` | Primary — headers, nav, primary buttons |
-| `moss` | `#5B7F5E` | Supporting green — icons, accents |
-| `clay` | `#B5502B` | Accent — price, secondary CTAs, ratings |
-| `paper` | `#F1F2EA` | Background |
-| `sand` | `#E4E1D3` | Borders, muted surfaces |
-| `ink` | `#1B1F17` | Text |
+4. Push your branch
 
-Typography: **Fraunces** (display/headings), **Inter** (body/UI), **IBM Plex Mono** (meta info — prices, tags, timestamps — styled like nursery plant tags). The signature visual motif is the hand-drawn "vine divider" (`components/ui/VineDivider.tsx`) used between homepage sections, and the nursery-tag-style category badges on every plant card.
+```bash
+git push origin feature/my-feature
+```
 
-## How auth works here
+5. Open a Pull Request
 
-`lib/auth-client.ts` creates a `better-auth` client pointed at the server's `baseURL`. `credentials: "include"` is set on every request (both in the auth client and in `lib/api.ts`) so the session cookie set by the server is sent on every API call — no manual token handling needed for the common case.
+---
 
-`components/auth/ProtectedRoute.tsx` wraps protected pages: it reads `useSession()` and redirects to `/login` if there's no session, showing a spinner while the session is resolving.
+## 👨‍💻 Author
 
-## Connecting AI features
+**Golam Robbani**
 
-- **Add Plant page** (`/plants/add`) embeds `CareGuideGenerator`, which calls `POST /api/ai/care-guide` once title/category/difficulty are filled in, and drops the result into the full description field (editable before submit).
-- **Identify page** (`/identify`) embeds `PlantIdentifier`, which uploads a photo (converted to base64 client-side), calls `POST /api/ai/identify`, and shows species/confidence/care tips/toxicity — with a "List this plant" button that pre-fills the Add Plant form via query params.
+GitHub: https://github.com/GrRabby
 
-## Notes
+LinkedIn: https://www.linkedin.com/in/gulam-robbani/
 
-- Images use `images.unsplash.com` (allow-listed in `next.config.mjs`) for realistic photography rather than placeholder content, per the "no dummy content" requirement.
-- The first `npm run build` needs internet access to fetch Fraunces/Inter/IBM Plex Mono from Google Fonts (standard `next/font/google` behavior) — after that they're self-hosted from `.next/`.
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+⭐ If you found this project helpful, consider giving it a star!
