@@ -103,16 +103,25 @@ export const Navbar = () => {
       {open && (
         <div className="border-t border-sand bg-paper px-4 pb-4 md:hidden">
           <nav className="flex flex-col gap-3 pt-3">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="text-sm font-medium text-ink/80"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) => {
+              const isActive = pathname === link.href;
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    isActive
+                      ? "bg-[#23402b]/10 text-[#23402b]"
+                      : "text-ink/60 hover:bg-[#23402b]/5 hover:text-[#23402b]"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <div className="mt-2 flex gap-3 border-t border-sand pt-3">
               {session ? (
                 <Button variant="outline" size="sm" onClick={handleSignOut} className="w-full">
