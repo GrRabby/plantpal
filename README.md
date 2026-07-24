@@ -1,5 +1,7 @@
 # 🌿 PlantPal
 
+<img width="1917" height="945" alt="Screenshot 2026-07-24 071508" src="https://github.com/user-attachments/assets/ebf95222-a6d0-4e31-bbb5-c4141c7523f7" />
+
 A modern plant marketplace and plant management platform built with **Next.js**, **TypeScript**, and **Tailwind CSS**. PlantPal allows users to discover plants, filter by categories, browse detailed information, and manage their plant collection through a clean and responsive interface.
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
