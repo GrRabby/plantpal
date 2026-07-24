@@ -4,7 +4,7 @@
 
 A modern plant marketplace and plant management platform built with **Next.js**, **TypeScript**, and **Tailwind CSS**. PlantPal allows users to discover plants, filter by categories, browse detailed information, and manage their plant collection through a clean and responsive interface.
 
-🔗 **Live Site:** [https://plantpal-inky.vercel.app/]https://plantpal-inky.vercel.app/)
+🔗 **Live Site:** [https://plantpal-inky.vercel.app/](https://plantpal-inky.vercel.app/)
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
